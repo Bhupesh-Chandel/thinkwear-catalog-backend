@@ -7,7 +7,7 @@ const NODE_ENV = process.env.NODE_ENV || "dev";
 const BACKEND_DOMAIN = "https://mernspace-prisma-auth.vercel.app";
 exports.Config = {
     port: 5502,
-    databaseUrl: "mongodb://ramandahiya:ramandahiya@130.61.29.195:27017?retryWrites=true&w=majority&appName=MernspaceCluster",
+    databaseUrl: "mongodb+srv://thinkwear:ThinkWear%40123@cluster0.xfntdq5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     clientUI: "https://ms-own-catalog-service.vercel.app",
     adminUI: "https://ms-admin-social-dashboard.vercel.app",
     jwksUri: NODE_ENV == "dev"

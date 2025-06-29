@@ -16,9 +16,11 @@ const ALLOWED_DOMAINS = [
     "http://localhost:5173",
     "http://localhost:5175",
     "http://localhost:3000",
+    "http://localhost:5174",
     "https://mernspace-own-client-ui.vercel.app",
     "https://ms-admin-social-dashboard.vercel.app",
     "http://mernspace-order-service.xdahiya.loseyourip.com/",
+    "https://thinkwear-admin-frontend-production.up.railway.app",
     config_1.Config.adminUI,
     config_1.Config.clientUI,
 ];

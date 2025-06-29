@@ -21,6 +21,7 @@ const ALLOWED_DOMAINS = [
     "https://ms-admin-social-dashboard.vercel.app",
     "http://mernspace-order-service.xdahiya.loseyourip.com/",
     "https://thinkwear-admin-frontend-production.up.railway.app",
+    "https://thinkwear-client-production.up.railway.app",
     config_1.Config.adminUI,
     config_1.Config.clientUI,
 ];

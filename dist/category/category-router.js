@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const category_controller_1 = require("./category-controller");
+const category_validator_1 = __importDefault(require("./category-validator"));
+const category_service_1 = require("./category-service");
+const logger_1 = __importDefault(require("../config/logger"));
+const wrapper_1 = require("../common/utils/wrapper");
+const authenticate_1 = __importDefault(require("../common/middlewares/authenticate"));
+const canAccess_1 = require("../common/middlewares/canAccess");
+const constants_1 = require("../common/constants");
+const router = express_1.default.Router();
+const categoryService = new category_service_1.CategoryService();
+const categoryController = new category_controller_1.CategoryController(categoryService, logger_1.default);
+router.post("/", authenticate_1.default, (0, canAccess_1.canAccess)([constants_1.Roles.ADMIN]), category_validator_1.default, (0, wrapper_1.asyncWrapper)(categoryController.create));
+router.put("/:id", authenticate_1.default, (0, canAccess_1.canAccess)([constants_1.Roles.ADMIN, constants_1.Roles.MANAGER]), category_validator_1.default, (0, wrapper_1.asyncWrapper)(categoryController.update));
+router.get("/", (0, wrapper_1.asyncWrapper)(categoryController.index));
+router.get("/:categoryId", (0, wrapper_1.asyncWrapper)(categoryController.getOne));
+router.delete("/:categoryId", authenticate_1.default, (0, canAccess_1.canAccess)([constants_1.Roles.ADMIN]), (0, wrapper_1.asyncWrapper)(categoryController.delete));
+exports.default = router;

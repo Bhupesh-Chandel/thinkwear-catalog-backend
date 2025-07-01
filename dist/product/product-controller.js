@@ -172,7 +172,7 @@ class ProductController {
                 page: req.query.page ? parseInt(req.query.page) : 1,
                 limit: req.query.limit
                     ? parseInt(req.query.limit)
-                    : 10,
+                    : 30,
             });
             const finalProducts = products.data.map((product) => {
                 return Object.assign(Object.assign({}, product), { image: this.storage.getObjectUri(product.image) });

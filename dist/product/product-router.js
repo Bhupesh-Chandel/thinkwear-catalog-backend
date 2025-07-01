@@ -16,6 +16,7 @@ const S3Storage_1 = require("../common/services/S3Storage");
 const http_errors_1 = __importDefault(require("http-errors"));
 const update_product_validator_1 = __importDefault(require("./update-product-validator"));
 const logger_1 = __importDefault(require("../config/logger"));
+// import getLatest
 const brokerFactory_1 = require("../common/factories/brokerFactory");
 const router = express_1.default.Router();
 const productService = new product_service_1.ProductService();
@@ -30,6 +31,10 @@ router.post("/", authenticate_1.default, (0, canAccess_1.canAccess)([constants_1
         next(error);
     },
 }), create_product_validator_1.default, (0, wrapper_1.asyncWrapper)(productController.create));
+// router.post(
+//   "/latestProducts",
+//   asyncWrapper(productController.latestProducts)
+// );
 router.put("/:productId", authenticate_1.default, (0, canAccess_1.canAccess)([constants_1.Roles.ADMIN, constants_1.Roles.MANAGER]), (0, express_fileupload_1.default)({
     limits: { fileSize: 500 * 1024 },
     abortOnLimit: true,

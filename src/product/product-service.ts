@@ -1,6 +1,7 @@
 import { paginationLabels } from "../config/pagination";
 import productModel from "./product-model";
 import { Filter, PaginateQuery, Product } from "./product-types";
+import categoryModel from "../category/category-model"; 
 
 export class ProductService {
     async createProduct(product: Product) {
@@ -26,6 +27,17 @@ export class ProductService {
     async getProduct(productId: string): Promise<Product | null> {
         return await productModel.findOne({ _id: productId }).lean();
     }
+
+    // async getLatest(CategoryName : string) : Promise<any> {
+    //     try{
+    //      const category = await categoryModel.findOne({ name: CategoryName }).lean();
+    //     const prod = await productModel.find({categoryId : category}).populate("categoryId").lean();
+    //     return prod;
+    //     }catch(err){
+    //         console.error("error in getLatest");
+    //         throw err;
+    //     }
+    // }
 
     async getProducts(
         q: string,

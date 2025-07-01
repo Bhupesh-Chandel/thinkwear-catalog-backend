@@ -11,6 +11,7 @@ import { S3Storage } from "../common/services/S3Storage";
 import createHttpError from "http-errors";
 import updateProductValidator from "./update-product-validator";
 import logger from "../config/logger";
+// import getLatest
 
 import { createMessageBroker } from "../common/factories/brokerFactory";
 
@@ -42,6 +43,11 @@ router.post(
     createProductValidator,
     asyncWrapper(productController.create),
 );
+
+// router.post(
+//   "/latestProducts",
+//   asyncWrapper(productController.latestProducts)
+// );
 
 router.put(
     "/:productId",

@@ -84,6 +84,23 @@ class ProductController {
             const imageUri = this.storage.getObjectUri(productData.image);
             res.json(Object.assign(Object.assign({}, productData), { image: imageUri }));
         });
+        //made this for something
+        // latestProducts = async (req: Request, res: Response, next: NextFunction) => {
+        //     try {
+        //         const { categoryName } = req.body;
+        //         if (!categoryName) {
+        //             return next(createHttpError(400, "categoryName is required"));
+        //         }
+        //         const products = await this.productService.getLatest(categoryName);
+        //         const finalProducts = products.map((product: Product) => ({
+        //             ...product,
+        //             image: this.storage.getObjectUri(product.image),
+        //         }));
+        //         res.json({ data: finalProducts });
+        //     } catch (err) {
+        //         next(createHttpError(500, "Internal server error"));
+        //     }
+        // };
         this.update = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             var _a;
             const result = (0, express_validator_1.validationResult)(req);

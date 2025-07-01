@@ -40,6 +40,16 @@ class ProductService {
             return yield product_model_1.default.findOne({ _id: productId }).lean();
         });
     }
+    // async getLatest(CategoryName : string) : Promise<any> {
+    //     try{
+    //      const category = await categoryModel.findOne({ name: CategoryName }).lean();
+    //     const prod = await productModel.find({categoryId : category}).populate("categoryId").lean();
+    //     return prod;
+    //     }catch(err){
+    //         console.error("error in getLatest");
+    //         throw err;
+    //     }
+    // }
     getProducts(q, filters, paginateQuery) {
         return __awaiter(this, void 0, void 0, function* () {
             const searchQueryRegexp = new RegExp(q, "i");

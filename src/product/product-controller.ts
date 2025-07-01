@@ -21,7 +21,7 @@ export class ProductController {
         private storage: FileStorage,
         private broker: MessageBroker,
         private logger: Logger,
-    ) {}
+    ) { }
 
     create = async (req: Request, res: Response, next: NextFunction) => {
         const result = validationResult(req);
@@ -108,6 +108,29 @@ export class ProductController {
         const imageUri = this.storage.getObjectUri(productData.image);
         res.json({ ...productData, image: imageUri });
     };
+     
+     //made this for something
+    // latestProducts = async (req: Request, res: Response, next: NextFunction) => {
+    //     try {
+    //         const { categoryName } = req.body;
+
+    //         if (!categoryName) {
+    //             return next(createHttpError(400, "categoryName is required"));
+    //         }
+
+    //         const products = await this.productService.getLatest(categoryName);
+
+    //         const finalProducts = products.map((product: Product) => ({
+    //             ...product,
+    //             image: this.storage.getObjectUri(product.image),
+    //         }));
+
+    //         res.json({ data: finalProducts });
+    //     } catch (err) {
+    //         next(createHttpError(500, "Internal server error"));
+    //     }
+    // };
+
 
     update = async (req: Request, res: Response, next: NextFunction) => {
         const result = validationResult(req);
